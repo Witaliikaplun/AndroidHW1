@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="XX"
+                android:textColor="#757575"
+                android:textSize="70sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:text="@string/c"
+                android:textAlignment="center"
+                android:textColor="#2F2E2E"
+                android:textSize="70sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:shadowColor="#FFFFFF"
+
+
+            android:text="City"
+            android:textAlignment="center"
+            android:textColor="#2F2E2E"
+            android:textSize="@dimen/size_text" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="256dp"
+            android:layout_height="128dp"
+
+            android:layout_gravity="center"
+            android:contentDescription="@string/image2"
+            app:srcCompat="@drawable/sunny_sunshine_weather_2778" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="119dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="87dp"
+                android:layout_height="87dp"
+                android:layout_gravity="fill_horizontal|top"
+                android:layout_marginStart="56dp"
+                android:layout_marginBottom="18dp"
+                android:contentDescription="@string/image3"
+                app:srcCompat="@drawable/weather_wind_flag_storm_travel_1455" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="88dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="150dp"
+                android:text="@string/speed"
+
+                android:textColor="#2F2E2E"
+                android:textSize="@dimen/size_text" />
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="DARK"
+                android:textColor="#1E1C1C"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
