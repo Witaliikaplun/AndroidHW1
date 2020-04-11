@@ -1,42 +1,44 @@
 package ru.GB;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import static ru.GB.R.id.imageView2;
-import static ru.GB.R.id.scree;
 import static ru.GB.R.id.textView;
 import static ru.GB.R.id.textView2;
 import static ru.GB.R.id.textView3;
 import static ru.GB.R.id.textView4;
 import static ru.GB.R.id.textView5;
+import static ru.GB.R.id.textView6;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
+        //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
+        final Button btn2 = findViewById(R.id.button2);
+
         final TextView t1 =  findViewById(textView);
         final TextView t2 =  findViewById(textView3);
         final TextView t3 =  findViewById(textView2);
         final TextView t4 =  findViewById(textView4);
         final TextView t5 =  findViewById(textView5);
         final ImageView imageBack = findViewById(imageView2);
-
-
 
        btn1.setOnClickListener(new View.OnClickListener() {
            @SuppressLint("ResourceAsColor")
@@ -55,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
            }
        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, ClassScreen2.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 
