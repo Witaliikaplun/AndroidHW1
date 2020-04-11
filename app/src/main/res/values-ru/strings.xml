@@ -15,5 +15,6 @@
     <string name="SPB">Санкт-Петербург</string>
     <string name="setBut">Настройки</string>
     <string name="setting">настройки</string>
+    <string name="back">назад</string>
 
 </resources>

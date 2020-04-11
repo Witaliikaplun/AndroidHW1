@@ -1,6 +1,7 @@
 package ru.GB;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -20,8 +21,11 @@ public class ClassScreen2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen2);
 
-//        final Button btn3 = findViewById(R.id.button1);
-//        final ImageView imageBack = findViewById(R.id.imageView2);
+
+
+        final Button btn3 = findViewById(R.id.button3);
+        final Button btn4 = findViewById(R.id.button4);
+        final ImageView imageBack = findViewById(R.id.imageView4);
 
         String msk = (String) getText(R.string.MSK);
         String spb = (String) getText(R.string.SPB);
@@ -29,8 +33,8 @@ public class ClassScreen2 extends AppCompatActivity {
         final TextView t6 =  findViewById(R.id.textView6);
         final String[] data = {msk, spb, krd};
 
-//        final Switch s2 = findViewById(R.id.switch2);
-//        final Switch s3 = findViewById(R.id.switch3);
+        final Switch s2 = findViewById(R.id.switch2);
+        final Switch s3 = findViewById(R.id.switch3);
 
 
          //адаптер----------------------------------------------------
@@ -70,39 +74,49 @@ public class ClassScreen2 extends AppCompatActivity {
             }
         });
 
-//        btn3.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(btn3.getText().equals("DARK")) {
-//                    setDarkTeme(btn3, s2, s3, R.color.colorDark, "LIGHT", R.color.fontDark);
-//                    imageBack.setAlpha((float) 0.3);
-//
-//
-//                } else {
-//                    setLightTeme(btn3, s2, s3, R.color.colorLIHT, "DARK", R.color.colorfontLIHT);
-//                    imageBack.setAlpha((float) 1.0);
-//                }
-//
-//            }
-//        });
-//    }
-//    private void setLightTeme(Button btn3, Switch s2, Switch s3, int p, String dark, int p2) {
-//        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
-//        view.setBackgroundResource(p);
-//        btn3.setText(dark);
-//        s2.setTextColor(getResources().getColor(p2));
-//        s3.setTextColor(getResources().getColor(p2));
-//
-//    }
-//
-//    private void setDarkTeme(Button btn3, Switch s2, Switch s3, int p, String liht, int p2) {
-//        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
-//        view.setBackgroundResource(p);
-//        btn3.setText(liht);
-//        s2.setTextColor(getResources().getColor(p2));
-//        s3.setTextColor(getResources().getColor(p2));
-//
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+
+                if(btn3.getText().equals("DARK")) {
+                    setDarkTeme(btn3, s2, s3, R.color.colorDark, "LIGHT", R.color.fontDark);
+                    imageBack.setAlpha((float) 0.3);
+
+
+                } else {
+                    setLightTeme(btn3, s2, s3, R.color.colorLIHT, "DARK", R.color.colorfontLIHT);
+                    imageBack.setAlpha((float) 1.0);
+                }
+
+            }
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ClassScreen2.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+    }
+    private void setLightTeme(Button btn3, Switch s2, Switch s3, int p, String dark, int p2) {
+        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree2);
+        view.setBackgroundResource(p);
+        btn3.setText(dark);
+        s2.setTextColor(getResources().getColor(p2));
+        s3.setTextColor(getResources().getColor(p2));
+
+    }
+
+    private void setDarkTeme(Button btn3, Switch s2, Switch s3, int p, String liht, int p2) {
+        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree2);
+        view.setBackgroundResource(p);
+        btn3.setText(liht);
+        s2.setTextColor(getResources().getColor(p2));
+        s3.setTextColor(getResources().getColor(p2));
+
     }
 }
