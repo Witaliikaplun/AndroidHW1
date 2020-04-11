@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import static ru.GB.R.id.imageView2;
 import static ru.GB.R.id.scree;
 import static ru.GB.R.id.textView;
 import static ru.GB.R.id.textView2;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView t3 =  findViewById(textView2);
         final TextView t4 =  findViewById(textView4);
         final TextView t5 =  findViewById(textView5);
+        final ImageView imageBack = findViewById(imageView2);
 
 
 
@@ -42,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
                if(btn1.getText().equals("DARK")) {
                    setDarkTeme(btn1, t1, t2, t3, t4, t5, R.color.colorDark, "LIGHT", R.color.fontDark);
+                   imageBack.setAlpha((float) 0.3);
 
 
                } else {
                    setLightTeme(btn1, t1, t2, t3, t4, t5, R.color.colorLIHT, "DARK", R.color.colorfontLIHT);
+                   imageBack.setAlpha((float) 1.0);
                }
 
            }
