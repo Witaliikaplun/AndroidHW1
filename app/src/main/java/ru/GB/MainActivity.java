@@ -16,6 +16,7 @@ import static ru.GB.R.id.textView;
 import static ru.GB.R.id.textView2;
 import static ru.GB.R.id.textView3;
 import static ru.GB.R.id.textView4;
+import static ru.GB.R.id.textView5;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button btn1 = findViewById(R.id.button1);
-        final TextView t1 = findViewById(textView);
-        final TextView t2 = findViewById(textView3);
-        final TextView t3 = findViewById(textView2);
-        final TextView t4 = findViewById(textView4);
+        final TextView t1 =  findViewById(textView);
+        final TextView t2 =  findViewById(textView3);
+        final TextView t3 =  findViewById(textView2);
+        final TextView t4 =  findViewById(textView4);
+        final TextView t5 =  findViewById(textView5);
+
+
 
        btn1.setOnClickListener(new View.OnClickListener() {
            @SuppressLint("ResourceAsColor")
@@ -37,23 +41,11 @@ public class MainActivity extends AppCompatActivity {
            public void onClick(View v) {
 
                if(btn1.getText().equals("DARK")) {
-                   ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
-                   view.setBackgroundResource(R.color.colorDark);
-                   btn1.setText("LIHT");
-                   t1.setTextColor(R.color.fontDark);
-                   t2.setTextColor(R.color.fontDark);
-                   t3.setTextColor(R.color.fontDark);
-                   t4.setTextColor(R.color.fontDark);
+                   setDarkTeme(btn1, t1, t2, t3, t4, t5, R.color.colorDark, "LIGHT", R.color.fontDark);
 
 
                } else {
-                   ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
-                   view.setBackgroundResource(R.color.colorLIHT);
-                   btn1.setText("DARK");
-                   t1.setTextColor(R.color.colorfontLIHT);
-                   t2.setTextColor(R.color.colorfontLIHT);
-                   t3.setTextColor(R.color.colorfontLIHT);
-                   t4.setTextColor(R.color.colorfontLIHT);
+                   setLightTeme(btn1, t1, t2, t3, t4, t5, R.color.colorLIHT, "DARK", R.color.colorfontLIHT);
                }
 
            }
@@ -64,5 +56,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void setLightTeme(Button btn1, TextView t1, TextView t2, TextView t3, TextView t4, TextView t5, int p, String dark, int p2) {
+        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
+        view.setBackgroundResource(p);
+        btn1.setText(dark);
+        t1.setTextColor(getResources().getColor(p2));
+        t2.setTextColor(getResources().getColor(p2));
+        t3.setTextColor(getResources().getColor(p2));
+        t4.setTextColor(getResources().getColor(p2));
+        t5.setTextColor(getResources().getColor(p2));
+    }
+
+    private void setDarkTeme(Button btn1, TextView t1, TextView t2, TextView t3, TextView t4, TextView t5, int p, String liht, int p2) {
+        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);
+        view.setBackgroundResource(p);
+        btn1.setText(liht);
+        t1.setTextColor(getResources().getColor(p2));
+        t2.setTextColor(getResources().getColor(p2));
+        t3.setTextColor(getResources().getColor(p2));
+        t4.setTextColor(getResources().getColor(p2));
+        t5.setTextColor(getResources().getColor(p2));
     }
 }
