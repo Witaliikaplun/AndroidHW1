@@ -97,7 +97,10 @@ public class ClassScreen2 extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(ClassScreen2.this, MainActivity.class);
+                //intent.putExtra("city_name", t6.getText());
                 startActivity(intent);
+
+
 
             }
         });
