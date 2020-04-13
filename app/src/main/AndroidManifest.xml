@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ClassScreen2"
+            android:label="@string/setting">
+        </activity>
     </application>
 
 </manifest>
