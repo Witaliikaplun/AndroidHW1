@@ -23,18 +23,13 @@ import static ru.GB.R.id.textView6;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
-
         //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
         final Button btn2 = findViewById(R.id.button2);
-
         final TextView t1 =  findViewById(textView);
         final TextView t2 =  findViewById(textView3);
         final TextView t3 =  findViewById(textView2);
@@ -46,36 +41,23 @@ public class MainActivity extends AppCompatActivity {
            @SuppressLint("ResourceAsColor")
            @Override
            public void onClick(View v) {
-
                if(btn1.getText().equals("DARK")) {
                    setDarkTeme(btn1, t1, t2, t3, t4, t5, R.color.colorDark, "LIGHT", R.color.fontDark);
                    imageBack.setAlpha((float) 0.3);
-
-
                } else {
                    setLightTeme(btn1, t1, t2, t3, t4, t5, R.color.colorLIHT, "DARK", R.color.colorfontLIHT);
                    imageBack.setAlpha((float) 1.0);
                }
-
            }
        });
-
         btn2.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, ClassScreen2.class);
                 startActivity(intent);
-
             }
         });
-
-
-
-
-
-
     }
 
     private void setLightTeme(Button btn1, TextView t1, TextView t2, TextView t3, TextView t4, TextView t5, int p, String dark, int p2) {
