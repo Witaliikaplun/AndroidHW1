@@ -2,9 +2,11 @@ package ru.GB;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static ru.GB.R.id.imageView2;
 import static ru.GB.R.id.textView;
@@ -23,10 +26,22 @@ import static ru.GB.R.id.textView6;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String LIFECYCLE = "LIFECYCLE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String instanceState;
+        if (savedInstanceState == null ){
+            instanceState = "Первый запуск!" ;
+        }
+        else {
+            instanceState = "Повторный запуск!" ;
+        }
+        messToast(" - onCreate()");
+
         //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
         final Button btn2 = findViewById(R.id.button2);
@@ -59,6 +74,62 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super .onStart();
+        messToast("onStart()");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        messToast("onSaveInstanceState()");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        messToast("Повторный запуск!!-onRestoreInstanceState()");
+    }
+
+    @Override
+    protected void onResume() {
+        super .onResume();
+        messToast("onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super .onPause();
+        messToast("onPause()");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super .onStop();
+        messToast("onStop()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super .onRestart();
+        messToast("onRestart()");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super .onDestroy();
+        messToast("onDestroy()");
+    }
+
+    private void messToast(String mes){
+        Toast.makeText(getApplicationContext(), mes, Toast.LENGTH_SHORT).show();
+        Log.d(LIFECYCLE, mes);
+    }
+
 
     private void setLightTeme(Button btn1, TextView t1, TextView t2, TextView t3, TextView t4, TextView t5, int p, String dark, int p2) {
         ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree);

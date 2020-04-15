@@ -3,6 +3,8 @@ package ru.GB;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,23 +16,39 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ClassScreen2 extends AppCompatActivity {
+
+     Button btn3;
+     Switch s2;
+     Switch s3;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen2);
+        String instanceState;
+        if (savedInstanceState == null ){
+            instanceState = "Первый запуск!" ;
+        }
+        else {
+            instanceState = "Повторный запуск!" ;
+        }
+        Toast. makeText (getApplicationContext(), instanceState + " - onCreate()" ,
+                Toast. LENGTH_SHORT ).show();
 
-        final Button btn3 = findViewById(R.id.button3);
-        final Button btn4 = findViewById(R.id.button4);
         final ImageView imageBack = findViewById(R.id.imageView4);
+        btn3 = findViewById(R.id.button3);
+        final Button btn4 = findViewById(R.id.button4);
+
         String msk = (String) getText(R.string.MSK);
         String spb = (String) getText(R.string.SPB);
         String krd = (String) getText(R.string.CRD);
         final TextView t6 =  findViewById(R.id.textView6);
         final String[] data = {msk, spb, krd};
-        final Switch s2 = findViewById(R.id.switch2);
-        final Switch s3 = findViewById(R.id.switch3);
+        s2 = findViewById(R.id.switch2);
+        s3 = findViewById(R.id.switch3);
 
         spinerMethod(t6, data);
 
@@ -38,7 +56,6 @@ public class ClassScreen2 extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-
                 if(btn3.getText().equals("DARK")) {
                     setDarkTeme(btn3, s2, s3, R.color.colorDark, "LIGHT", R.color.fontDark);
                     imageBack.setAlpha((float) 0.3);
@@ -57,6 +74,66 @@ public class ClassScreen2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super .onStart();
+        Toast. makeText (getApplicationContext(), "onStart()" , Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        final ImageView imageBack = findViewById(R.id.imageView4);
+        outState.putFloat("alpha", imageBack.getAlpha());
+
+        Toast. makeText (getApplicationContext(), "onSaveInstanceState()" ,
+                Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree2);
+        final ImageView imageBack = findViewById(R.id.imageView4);
+        Toast. makeText (getApplicationContext(), "Повторный запуск!!-onRestoreInstanceState()" , Toast. LENGTH_SHORT ).show();
+
+        if(imageBack.getAlpha() == 1.0) setDarkTeme(btn3, s2, s3, R.color.colorDark, "LIGHT", R.color.fontDark);
+        imageBack.setAlpha(savedInstanceState.getFloat("alpha"));
+    }
+
+    @Override
+    protected void onResume() {
+        super .onResume();
+        Toast. makeText (getApplicationContext(), "onResume()" ,
+                Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super .onPause();
+        Toast. makeText (getApplicationContext(), "onPause()" , Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super .onStop();
+        Toast. makeText (getApplicationContext(), "onStop()" , Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super .onRestart();
+        Toast. makeText (getApplicationContext(), "onRestart()" ,
+                Toast. LENGTH_SHORT ).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super .onDestroy();
+        Toast. makeText (getApplicationContext(), "onDestroy()" ,
+                Toast. LENGTH_SHORT ).show();
     }
 
     private void spinerMethod(final TextView t6, final String[] data) {
