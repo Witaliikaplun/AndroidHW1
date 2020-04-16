@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,9 +21,11 @@ import android.widget.Toast;
 
 public class ClassScreen2 extends AppCompatActivity {
 
-     Button btn3;
+    private static final String LIFECYCLE = "LIFECYCLE";
+    Button btn3;
      Switch s2;
      Switch s3;
+    ConstraintLayout view;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,14 +33,14 @@ public class ClassScreen2 extends AppCompatActivity {
         setContentView(R.layout.screen2);
         String instanceState;
         if (savedInstanceState == null ){
-            instanceState = "Первый запуск!" ;
+            instanceState = "ClassScreen2 Первый запуск!" ;
         }
         else {
-            instanceState = "Повторный запуск!" ;
+            instanceState = "ClassScreen2 Повторный запуск!" ;
         }
-        Toast. makeText (getApplicationContext(), instanceState + " - onCreate()" ,
+        Toast. makeText (getApplicationContext(), instanceState + "ClassScreen2  - onCreate()" ,
                 Toast. LENGTH_SHORT ).show();
-
+        view = (ConstraintLayout) findViewById(R.id.scree2);
         final ImageView imageBack = findViewById(R.id.imageView4);
         btn3 = findViewById(R.id.button3);
         final Button btn4 = findViewById(R.id.button4);
@@ -49,7 +52,6 @@ public class ClassScreen2 extends AppCompatActivity {
         final String[] data = {msk, spb, krd};
         s2 = findViewById(R.id.switch2);
         s3 = findViewById(R.id.switch3);
-
         spinerMethod(t6, data);
 
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +72,6 @@ public class ClassScreen2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClassScreen2.this, MainActivity.class);
-                //intent.putExtra("city_name", t6.getText());
                 startActivity(intent);
             }
         });
@@ -78,27 +79,22 @@ public class ClassScreen2 extends AppCompatActivity {
     @Override
     protected void onStart() {
         super .onStart();
-        Toast. makeText (getApplicationContext(), "onStart()" , Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onStart()");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         final ImageView imageBack = findViewById(R.id.imageView4);
         outState.putFloat("alpha", imageBack.getAlpha());
-
-        Toast. makeText (getApplicationContext(), "onSaveInstanceState()" ,
-                Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onSaveInstanceState()");
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree2);
         final ImageView imageBack = findViewById(R.id.imageView4);
-        Toast. makeText (getApplicationContext(), "Повторный запуск!!-onRestoreInstanceState()" , Toast. LENGTH_SHORT ).show();
-
+        messToast("ClassScreen2 Повторный запуск!!-onRestoreInstanceState()");
         if(imageBack.getAlpha() == 1.0) setDarkTeme(btn3, s2, s3, R.color.colorDark, "LIGHT", R.color.fontDark);
         imageBack.setAlpha(savedInstanceState.getFloat("alpha"));
     }
@@ -106,34 +102,32 @@ public class ClassScreen2 extends AppCompatActivity {
     @Override
     protected void onResume() {
         super .onResume();
-        Toast. makeText (getApplicationContext(), "onResume()" ,
-                Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onResume()");
     }
 
     @Override
     protected void onPause() {
         super .onPause();
-        Toast. makeText (getApplicationContext(), "onPause()" , Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onPause()");
     }
 
     @Override
     protected void onStop() {
         super .onStop();
-        Toast. makeText (getApplicationContext(), "onStop()" , Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onStop()");
     }
 
     @Override
     protected void onRestart() {
         super .onRestart();
-        Toast. makeText (getApplicationContext(), "onRestart()" ,
+        Toast. makeText (getApplicationContext(), "ClassScreen2 onRestart()" ,
                 Toast. LENGTH_SHORT ).show();
     }
 
     @Override
     protected void onDestroy() {
         super .onDestroy();
-        Toast. makeText (getApplicationContext(), "onDestroy()" ,
-                Toast. LENGTH_SHORT ).show();
+        messToast("ClassScreen2 onDestroy()");
     }
 
     private void spinerMethod(final TextView t6, final String[] data) {
@@ -171,8 +165,13 @@ public class ClassScreen2 extends AppCompatActivity {
         });
     }
 
+    private void messToast(String mes){
+        Toast.makeText(getApplicationContext(), mes, Toast.LENGTH_SHORT).show();
+        Log.d(LIFECYCLE, mes);
+    }
+
     private void setLightTeme(Button btn3, Switch s2, Switch s3, int p, String dark, int p2) {
-        ConstraintLayout view = (ConstraintLayout) findViewById(R.id.scree2);
+
         view.setBackgroundResource(p);
         btn3.setText(dark);
         s2.setTextColor(getResources().getColor(p2));

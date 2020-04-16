@@ -35,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         String instanceState;
         if (savedInstanceState == null ){
-            instanceState = "Первый запуск!" ;
+            instanceState = "MainActivity Первый запуск!" ;
         }
         else {
-            instanceState = "Повторный запуск!" ;
+            instanceState = "MainActivity Повторный запуск!" ;
         }
-        messToast(" - onCreate()");
+        messToast("MainActivity  - onCreate()");
 
         //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
@@ -78,51 +78,51 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super .onStart();
-        messToast("onStart()");
+        messToast("MainActivity onStart()");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        messToast("onSaveInstanceState()");
+        messToast("MainActivity onSaveInstanceState()");
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        messToast("Повторный запуск!!-onRestoreInstanceState()");
+        messToast("MainActivity Повторный запуск!!-onRestoreInstanceState()");
     }
 
     @Override
     protected void onResume() {
         super .onResume();
-        messToast("onResume()");
+        messToast("MainActivity onResume()");
     }
 
     @Override
     protected void onPause() {
         super .onPause();
-        messToast("onPause()");
+        messToast("MainActivity onPause()");
 
     }
 
     @Override
     protected void onStop() {
         super .onStop();
-        messToast("onStop()");
+        messToast("MainActivity onStop()");
     }
 
     @Override
     protected void onRestart() {
         super .onRestart();
-        messToast("onRestart()");
+        messToast("MainActivity onRestart()");
 
     }
 
     @Override
     protected void onDestroy() {
         super .onDestroy();
-        messToast("onDestroy()");
+        messToast("MainActivity onDestroy()");
     }
 
     private void messToast(String mes){
