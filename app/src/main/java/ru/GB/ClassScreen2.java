@@ -19,7 +19,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClassScreen2 extends AppCompatActivity {
+public class ClassScreen2 extends AppCompatActivity implements Constants{
 
     private static final String LIFECYCLE = "LIFECYCLE";
     Button btn3;
@@ -72,8 +72,10 @@ public class ClassScreen2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ClassScreen2.this, MainActivity.class);
+                intent.putExtra(CITY, t6.getText().toString());
                 startActivity(intent);
             }
+
         });
     }
     @Override

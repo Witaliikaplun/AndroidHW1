@@ -24,7 +24,7 @@ import static ru.GB.R.id.textView4;
 import static ru.GB.R.id.textView5;
 import static ru.GB.R.id.textView6;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants{
 
     private static final String LIFECYCLE = "LIFECYCLE";
 
@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         final TextView t4 =  findViewById(textView4);
         final TextView t5 =  findViewById(textView5);
         final ImageView imageBack = findViewById(imageView2);
+
+        if(getIntent().getExtras() != null){
+            t3.setText(getIntent().getExtras().getString(CITY));
+        }
 
        btn1.setOnClickListener(new View.OnClickListener() {
            @SuppressLint("ResourceAsColor")
