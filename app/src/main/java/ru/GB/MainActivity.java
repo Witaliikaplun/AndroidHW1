@@ -2,6 +2,7 @@ package ru.GB;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements Constants{
         //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
         final Button btn2 = findViewById(R.id.button2);
+        final Button btnGo = findViewById(R.id.button);
         final TextView t1 =  findViewById(textView);
         final TextView t2 =  findViewById(textView3);
         final TextView t3 =  findViewById(textView2);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements Constants{
         final TextView t9 = findViewById(textView9);
         final TextView t10 = findViewById(textView10);
         final ImageView imageBack = findViewById(imageView2);
+
 
         if(getIntent().getExtras() != null){
             t3.setText(getIntent().getExtras().getString(CITY));
@@ -83,6 +86,16 @@ public class MainActivity extends AppCompatActivity implements Constants{
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ClassScreen2.class);
                 startActivity(intent);
+            }
+        });
+
+        btnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String site = "https://yandex.ru/pogoda/krasnodar";
+                Uri uri = Uri.parse(site);
+                Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(browser);
             }
         });
     }
