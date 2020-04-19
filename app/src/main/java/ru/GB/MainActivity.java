@@ -2,6 +2,7 @@ package ru.GB;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,13 +19,15 @@ import android.widget.Toast;
 
 import static ru.GB.R.id.imageView2;
 import static ru.GB.R.id.textView;
+import static ru.GB.R.id.textView10;
 import static ru.GB.R.id.textView2;
 import static ru.GB.R.id.textView3;
 import static ru.GB.R.id.textView4;
 import static ru.GB.R.id.textView5;
 import static ru.GB.R.id.textView6;
+import static ru.GB.R.id.textView9;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Constants{
 
     private static final String LIFECYCLE = "LIFECYCLE";
 
@@ -45,12 +48,24 @@ public class MainActivity extends AppCompatActivity {
         //получаем ссылки на визуальные элементы----------------------
         final Button btn1 = findViewById(R.id.button1);
         final Button btn2 = findViewById(R.id.button2);
+        final Button btnGo = findViewById(R.id.button);
         final TextView t1 =  findViewById(textView);
         final TextView t2 =  findViewById(textView3);
         final TextView t3 =  findViewById(textView2);
         final TextView t4 =  findViewById(textView4);
         final TextView t5 =  findViewById(textView5);
+        final TextView t9 = findViewById(textView9);
+        final TextView t10 = findViewById(textView10);
         final ImageView imageBack = findViewById(imageView2);
+
+
+        if(getIntent().getExtras() != null){
+            t3.setText(getIntent().getExtras().getString(CITY));
+            if(getIntent().getExtras().getInt(S3) == 1) t9.setVisibility(View.VISIBLE);
+            if(getIntent().getExtras().getInt(S2) == 1) t10.setVisibility(View.VISIBLE);
+
+
+        }
 
        btn1.setOnClickListener(new View.OnClickListener() {
            @SuppressLint("ResourceAsColor")
@@ -71,6 +86,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ClassScreen2.class);
                 startActivity(intent);
+            }
+        });
+
+        btnGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String site = "https://yandex.ru/pogoda/krasnodar";
+                Uri uri = Uri.parse(site);
+                Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(browser);
             }
         });
     }

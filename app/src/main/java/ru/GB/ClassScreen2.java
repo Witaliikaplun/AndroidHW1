@@ -19,13 +19,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ClassScreen2 extends AppCompatActivity {
+public class ClassScreen2 extends AppCompatActivity implements Constants{
 
     private static final String LIFECYCLE = "LIFECYCLE";
     Button btn3;
      Switch s2;
      Switch s3;
     ConstraintLayout view;
+    Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class ClassScreen2 extends AppCompatActivity {
                 Toast. LENGTH_SHORT ).show();
         view = (ConstraintLayout) findViewById(R.id.scree2);
         final ImageView imageBack = findViewById(R.id.imageView4);
+        intent = new Intent(ClassScreen2.this, MainActivity.class);
         btn3 = findViewById(R.id.button3);
         final Button btn4 = findViewById(R.id.button4);
 
@@ -53,6 +55,8 @@ public class ClassScreen2 extends AppCompatActivity {
         s2 = findViewById(R.id.switch2);
         s3 = findViewById(R.id.switch3);
         spinerMethod(t6, data);
+
+
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -71,8 +75,25 @@ public class ClassScreen2 extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ClassScreen2.this, MainActivity.class);
+                intent.putExtra(CITY, t6.getText().toString());
                 startActivity(intent);
+            }
+
+        });
+
+        s2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(s2.isChecked()) intent.putExtra(S2, 1);
+                else intent.putExtra(S2, 0);
+            }
+        });
+
+        s3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(s3.isChecked()) intent.putExtra(S3, 1);
+                else intent.putExtra(S3, 0);
             }
         });
     }
