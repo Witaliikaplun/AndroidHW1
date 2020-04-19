@@ -18,11 +18,13 @@ import android.widget.Toast;
 
 import static ru.GB.R.id.imageView2;
 import static ru.GB.R.id.textView;
+import static ru.GB.R.id.textView10;
 import static ru.GB.R.id.textView2;
 import static ru.GB.R.id.textView3;
 import static ru.GB.R.id.textView4;
 import static ru.GB.R.id.textView5;
 import static ru.GB.R.id.textView6;
+import static ru.GB.R.id.textView9;
 
 public class MainActivity extends AppCompatActivity implements Constants{
 
@@ -50,10 +52,16 @@ public class MainActivity extends AppCompatActivity implements Constants{
         final TextView t3 =  findViewById(textView2);
         final TextView t4 =  findViewById(textView4);
         final TextView t5 =  findViewById(textView5);
+        final TextView t9 = findViewById(textView9);
+        final TextView t10 = findViewById(textView10);
         final ImageView imageBack = findViewById(imageView2);
 
         if(getIntent().getExtras() != null){
             t3.setText(getIntent().getExtras().getString(CITY));
+            if(getIntent().getExtras().getInt(S3) == 1) t9.setVisibility(View.VISIBLE);
+            if(getIntent().getExtras().getInt(S2) == 1) t10.setVisibility(View.VISIBLE);
+
+
         }
 
        btn1.setOnClickListener(new View.OnClickListener() {
